@@ -126,13 +126,14 @@
           <div class="col-span-1 bg-[#272541] h-[600px] w-[350px] rounded-2xl p-5">
             <div class="flex justify-between items-center mb-4">
               <h3 class="font-semibold text-lg">Hourly forecast</h3>
-              <div>
+              <div class="relative">
                 <select class="bg-[#3D3B5E] text-sm px-4 py-2 rounded-xl outline-none border border-white/10 text-white appearance-none cursor-pointer">
                   <option>Tuesday</option>
                   <option>Wednesday</option>
                   <option>Thursday</option>
                   <option>Friday</option>
                 </select>
+                <img src="assets/images/icon-dropdown.svg" class="w-4 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
               </div>
             </div>
             <div id="hourlyForecast" class="space-y-3 h-[500px] overflow-y-auto pr-2"></div>
