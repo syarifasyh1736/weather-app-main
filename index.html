@@ -25,37 +25,47 @@
       <header class="flex justify-between items-center mb-15">
         <img src="assets/images/logo.svg" alt="" />
         <div class="relative">
-          <button class="flex items-center bg-[#272541] px-4 py-2 gap-3 rounded-xl border border-white/40"><img src="/assets/images/icon-units.svg" alt="" />Units</button>
-          <div class="absolute right-0 top-16 w-[260px] bg-[#272541] rounded-2xl p-4 border border-white/10 shadow-xl">
+          <button id="unitToggle" class="flex items-center bg-[#272541] px-4 py-2 gap-3 rounded-xl border border-white/40">
+            <img src="/assets/images/icon-units.svg" alt="" />
+            Units
+            <img id="dropdownIcon" src="/assets/images/icon-dropdown.svg" alt="" class="w-4 transition duration-300" />
+          </button>
+          <div id="unitDropdown" class="hidden absolute right-0 top-16 w-[260px] bg-[#272541] rounded-2xl p-4 border border-white/10 shadow-xl">
             <h3 class="text-xl font-semibold mb-4">Switch to imperial</h3>
             <div class="mb-4">
               <p class="text-white/70 text-sm mb-2">Temperature</p>
-              <div class="bg-[#312F4B] rounded-lg px-3 py-2 flex justify-between items-center">
+              <div id="celsiusBtn" class="unit-option flex justify-between items-center px-3 py-2 rounded-lg cursor-pointer">
                 <span>Celsius(20°)</span>
-                <span>✓</span>
+                <img id="celsiusCheck" src="assets/images/icon-checkmark.svg" class="hidden" />
               </div>
-              <div class="mt-2 px-3 py-2">Fahrenheit(°F)</div>
+              <div id="fahrenheitBtn" class="unit-option flex justify-between items-center px-3 py-2 rounded-lg cursor-pointer mt-2">
+                <span>Fahrenheit(°F)</span>
+                <img id="fahrenheitCheck" src="assets/images/icon-checkmark.svg" class="hidden" />
+              </div>
             </div>
             <hr class="border-white/20 my-4" />
             <div class="mb-4">
               <p class="text-white/70 text-sm mb-2">Wind speed</p>
-              <div class="bg-[#312F4B] rounded-lg px-3 py-2 flex justify-between items-center">
+              <div id="kmBtn" class="unit-option flex justify-between items-center px-3 py-2 rounded-lg cursor-pointer">
                 <span>km/h</span>
-                <span>✓</span>
+                <img id="kmCheck" src="assets/images/icon-checkmark.svg" class="hidden" />
               </div>
-              <div class="mt-2 px-3 py-2">mph</div>
+              <div id="mphBtn" class="unit-option flex justify-between items-center px-3 py-2 rounded-lg cursor-pointer mt-2">
+                <span>mph</span>
+                <img id="mphCheck" src="assets/images/icon-checkmark.svg" class="hidden" />
+              </div>
             </div>
             <hr class="border-white/20 my-4" />
-
             <div>
               <p class="text-white/70 text-sm mb-2">Precipitation</p>
-
-              <div class="bg-[#312F4B] rounded-lg px-3 py-2 flex justify-between items-center">
+              <div id="mmBtn" class="unit-option flex justify-between items-center px-3 py-2 rounded-lg cursor-pointer">
                 <span>Millimeter(mm)</span>
-                <span>✓</span>
+                <img id="mmCheck" src="assets/images/icon-checkmark.svg" class="hidden" />
               </div>
-
-              <div class="mt-2 px-3 py-2">inches(in)</div>
+              <div id="inchBtn" class="unit-option flex justify-between items-center px-3 py-2 rounded-lg cursor-pointer mt-2">
+                <span>inches(in)</span>
+                <img id="inchCheck" src="assets/images/icon-checkmark.svg" class="hidden" />
+              </div>
             </div>
           </div>
         </div>
@@ -64,9 +74,9 @@
       <div class="flex justify-center items-center gap-4 mb-10 w-full">
         <div class="flex items-center bg-[#272541] rounded-lg px-4 w-[450px]">
           <img src="assets/images/icon-search.svg" class="w-5 h-5 mr-3" />
-          <input type="text" placeholder="Search for a place..." class="bg-transparent outline-none w-full py-3 text-white placeholder:text-gray-300" />
+          <input type="text" id="searchInput" placeholder="Search for a place..." class="bg-transparent outline-none w-full py-3 text-white placeholder:text-gray-300" />
         </div>
-        <button class="bg-indigo-500 hover:bg-indigo-600 transition px-6 py-3 rounded-lg font-medium">Search</button>
+        <button id="searchBtn" class="bg-indigo-500 hover:bg-indigo-600 transition px-6 py-3 rounded-lg font-medium">Search</button>
       </div>
       <div class="max-w-5xl mx-auto mt-10">
         <div class="grid grid-cols-3 gap-6">
@@ -79,202 +89,59 @@
               <div class="relative z-10 flex justify-between h-full">
                 <div class="flex flex-col justify-center">
                   <div>
-                    <h3 class="text-2xl font-semibold">Berlin, Germany</h3>
+                    <h3 id="cityName" class="text-2xl font-semibold">Loading...</h3>
                     <p class="text-sm text-white/70 mt-1">Tuesday, Aug 5, 2025</p>
                   </div>
                 </div>
                 <div class="flex items-center gap-4">
-                  <img src="/assets/images/icon-sunny.webp" class="w-25 h-25" />
-                  <span class="text-7xl font-semibold -skew-x-10"> 20° </span>
+                  <img id="weatherIcon" src="/assets/images/icon-sunny.webp" class="w-25 h-25" />
+                  <span id="temperature" class="text-7xl font-semibold -skew-x-10">--°</span>
                 </div>
               </div>
             </div>
             <div class="grid grid-cols-4 gap-4 mt-4">
               <div class="bg-[#272541] rounded-2xl p-5">
                 <p class="text-white/80 text-sm">Feels Like</p>
-                <h3 class="text-2xl mt-3">18°</h3>
+                <h3 id="feelsLike" class="text-2xl mt-3">--°</h3>
               </div>
               <div class="bg-[#272541] rounded-2xl p-5">
                 <p class="text-white/80 text-sm">Humidity</p>
-                <h3 class="text-2xl mt-3">46%</h3>
+                <h3 id="humidity" class="text-2xl mt-3">--%</h3>
               </div>
 
               <div class="bg-[#272541] rounded-2xl p-5">
                 <p class="text-white/80 text-sm">Wind</p>
-                <h3 class="text-2xl mt-3">14 km/h</h3>
+                <h3 id="windSpeed" class="text-2xl mt-3">-- km/h</h3>
               </div>
 
               <div class="bg-[#272541] rounded-2xl p-5">
                 <p class="text-white/80 text-sm">Precipitation</p>
-                <h3 class="text-2xl mt-3">0 mm</h3>
+                <h3 id="precipitation" class="text-2xl mt-3">-- mm</h3>
               </div>
             </div>
             <h3 class="text-xl font-semibold mt-8 mb-4">Daily Forecast</h3>
-            <div class="grid grid-cols-7 gap-3">
-              <div class="bg-[#272541] rounded-2xl p-4 text-center">
-                <p class="text-sm mb-4">Tue</p>
-                <img src="/assets/images/icon-rain.webp" alt="" class="w-12 h-12 mx-auto mb-4" />
-                <div class="flex justify-between text-sm">
-                  <span>20°</span>
-                  <span class="text-white/60">14°</span>
-                </div>
-              </div>
-              <div class="bg-[#272541] rounded-2xl p-4 text-center">
-                <p class="text-sm mb-4">Tue</p>
-                <img src="/assets/images/icon-rain.webp" alt="" class="w-12 h-12 mx-auto mb-4" />
-                <div class="flex justify-between text-sm">
-                  <span>20°</span>
-                  <span class="text-white/60">14°</span>
-                </div>
-              </div>
-              <div class="bg-[#272541] rounded-2xl p-4 text-center">
-                <p class="text-sm mb-4">Tue</p>
-                <img src="/assets/images/icon-rain.webp" alt="" class="w-12 h-12 mx-auto mb-4" />
-                <div class="flex justify-between text-sm">
-                  <span>20°</span>
-                  <span class="text-white/60">14°</span>
-                </div>
-              </div>
-              <div class="bg-[#272541] rounded-2xl p-4 text-center">
-                <p class="text-sm mb-4">Tue</p>
-                <img src="/assets/images/icon-rain.webp" alt="" class="w-12 h-12 mx-auto mb-4" />
-                <div class="flex justify-between text-sm">
-                  <span>20°</span>
-                  <span class="text-white/60">14°</span>
-                </div>
-              </div>
-              <div class="bg-[#272541] rounded-2xl p-4 text-center">
-                <p class="text-sm mb-4">Tue</p>
-                <img src="/assets/images/icon-rain.webp" alt="" class="w-12 h-12 mx-auto mb-4" />
-                <div class="flex justify-between text-sm">
-                  <span>20°</span>
-                  <span class="text-white/60">14°</span>
-                </div>
-              </div>
-              <div class="bg-[#272541] rounded-2xl p-4 text-center">
-                <p class="text-sm mb-4">Tue</p>
-                <img src="/assets/images/icon-rain.webp" alt="" class="w-12 h-12 mx-auto mb-4" />
-                <div class="flex justify-between text-sm">
-                  <span>20°</span>
-                  <span class="text-white/60">14°</span>
-                </div>
-              </div>
-              <div class="bg-[#272541] rounded-2xl p-4 text-center">
-                <p class="text-sm mb-4">Tue</p>
-                <img src="/assets/images/icon-rain.webp" alt="" class="w-12 h-12 mx-auto mb-4" />
-                <div class="flex justify-between text-sm">
-                  <span>20°</span>
-                  <span class="text-white/60">14°</span>
-                </div>
-              </div>
-            </div>
+            <div id="dailyForecast" class="grid grid-cols-5 gap-3"></div>
           </div>
           <!--kanan-->
           <div class="col-span-1 bg-[#272541] h-[600px] w-[350px] rounded-2xl p-5">
             <div class="flex justify-between items-center mb-4">
               <h3 class="font-semibold text-lg">Hourly forecast</h3>
-              <select class="bg-[#3D3B5E] text-sm px-3 py-1 rounded-lg outline-none">
-                <option>Tuesday</option>
-                <option>Wednesday</option>
-                <option>Thursday</option>
-                <option>Friday</option>
-              </select>
-            </div>
-            <div class="space-y-3 h-[500px] overflow-y-auto pr-2">
-              <div class="bg-[#312F4B] rounded-lg px-4 py-3 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <img src="assets/images/icon-snow.webp" class="w-8 h-8" />
-                  <span>3 PM</span>
-                </div>
-                <span>20°</span>
-              </div>
-              <div class="bg-[#312F4B] rounded-lg px-4 py-3 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <img src="assets/images/icon-snow.webp" class="w-8 h-8" />
-                  <span>4 PM</span>
-                </div>
-                <span>20°</span>
-              </div>
-              <div class="bg-[#312F4B] rounded-lg px-4 py-3 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <img src="assets/images/icon-snow.webp" class="w-8 h-8" />
-                  <span>5 PM</span>
-                </div>
-                <span>20°</span>
-              </div>
-              <div class="bg-[#312F4B] rounded-lg px-4 py-3 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <img src="assets/images/icon-snow.webp" class="w-8 h-8" />
-                  <span>6 PM</span>
-                </div>
-                <span>19°</span>
-              </div>
-              <div class="bg-[#312F4B] rounded-lg px-4 py-3 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <img src="assets/images/icon-snow.webp" class="w-8 h-8" />
-                  <span>7 PM</span>
-                </div>
-                <span>18°</span>
-              </div>
-              <div class="bg-[#312F4B] rounded-lg px-4 py-3 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <img src="assets/images/icon-snow.webp" class="w-8 h-8" />
-                  <span>8 PM</span>
-                </div>
-                <span>18°</span>
-              </div>
-
-              <div class="bg-[#312F4B] rounded-lg px-4 py-3 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <img src="assets/images/icon-snow.webp" class="w-8 h-8" />
-                  <span>9 PM</span>
-                </div>
-                <span>17°</span>
-              </div>
-
-              <div class="bg-[#312F4B] rounded-lg px-4 py-3 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <img src="assets/images/icon-snow.webp" class="w-8 h-8" />
-                  <span>10 PM</span>
-                </div>
-                <span>17°</span>
-              </div>
-              <div class="bg-[#312F4B] rounded-lg px-4 py-3 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <img src="assets/images/icon-rain.webp" class="w-8 h-8" />
-                  <span>7 PM</span>
-                </div>
-                <span>18°</span>
-              </div>
-
-              <div class="bg-[#312F4B] rounded-lg px-4 py-3 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <img src="assets/images/icon-snow.webp" class="w-8 h-8" />
-                  <span>8 PM</span>
-                </div>
-                <span>18°</span>
-              </div>
-
-              <div class="bg-[#312F4B] rounded-lg px-4 py-3 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <img src="assets/images/icon-snow.webp" class="w-8 h-8" />
-                  <span>9 PM</span>
-                </div>
-                <span>17°</span>
-              </div>
-
-              <div class="bg-[#312F4B] rounded-lg px-4 py-3 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <img src="assets/images/icon-snow.webp" class="w-8 h-8" />
-                  <span>10 PM</span>
-                </div>
-                <span>17°</span>
+              <div>
+                <select class="bg-[#3D3B5E] text-sm px-4 py-2 rounded-xl outline-none border border-white/10 text-white appearance-none cursor-pointer">
+                  <option>Tuesday</option>
+                  <option>Wednesday</option>
+                  <option>Thursday</option>
+                  <option>Friday</option>
+                </select>
               </div>
             </div>
+            <div id="hourlyForecast" class="space-y-3 h-[500px] overflow-y-auto pr-2"></div>
           </div>
         </div>
       </div>
     </div>
     <footer class="attribution">Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. Coded by <a href="#">Syarifah Aisyah</a>.</footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
